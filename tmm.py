@@ -1,12 +1,24 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+def sin_complex(v):
+    a = np.real(v) % (2 * np.pi)
+    b = np.imag(v) % (2 * np.pi)
+
+    return np.sin(a) * np.cosh(b) + 1j * np.cos(a) * np.sinh(b)
+
+def cos_complex(v):
+    a = np.real(v) % (2 * np.pi)
+    b = np.imag(v) % (2 * np.pi)
+
+    return np.cos(a) * np.cosh(b) - 1j * np.sin(a) * np.sinh(b)
+
 def transfer_matrix(k_0, n, d, theta):
     k_z = k_0 * n * np.cos(theta) # Calculate longitudanal K
 
     # Reduce redundant calculations in construction T_i
-    q_1 = np.cos(k_z * d) 
-    q_2 = 1j * np.sin(k_z * d)
+    q_1 = cos_complex(k_z * d) 
+    q_2 = 1j * sin_complex(k_z * d)
     n_cos_th = n * np.cos(theta)
 
     # Transfer matrix calculation derived from Maxwell's equations
