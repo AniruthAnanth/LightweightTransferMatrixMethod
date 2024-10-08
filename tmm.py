@@ -24,8 +24,9 @@ def sin_complex(v):
     return (np.sin(a) * np.cosh(b)) + 1j * (np.cos(a) * np.sinh(b))
 
 def cos_complex(v):
+    # Take advantage of periodicity of trigonometric functions to evaluate at large values
     a = np.real(v) % (2 * np.pi)
-    b = np.imag(v) % (2 * np.pi)
+    b = complex_modulo(np.imag(v), (2 * np.pi * 1j))
 
     return np.cos(a) * np.cosh(b) - 1j * np.sin(a) * np.sinh(b)
 
