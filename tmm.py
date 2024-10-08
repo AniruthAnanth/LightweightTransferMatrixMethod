@@ -1,11 +1,27 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def sin_complex(v):
-    a = np.real(v) % (2 * np.pi)
-    b = np.imag(v) % (2 * np.pi)
+def complex_modulo(z1, z2):
+    # Calculate the absolute values of the complex numbers
+    abs_z1 = np.abs(z1)
+    abs_z2 = np.abs(z2)
+    
+    # Calculate the modulus
+    remainder = abs_z1 % abs_z2
+    
+    # Return the remainder as a complex number with the same argument as z1
+    # Adjusting the angle to match the original complex number's angle
+    angle_z1 = np.angle(z1)
+    result = remainder * np.exp(1j * angle_z1)
+    
+    return result
 
-    return np.sin(a) * np.cosh(b) + 1j * np.cos(a) * np.sinh(b)
+def sin_complex(v):
+    # Take advantage of periodicity of trigonometric functions to evaluate at large values
+    a = np.real(v) % (2 * np.pi)
+    b = complex_modulo(np.imag(v), (2 * np.pi * 1j))
+
+    return (np.sin(a) * np.cosh(b)) + 1j * (np.cos(a) * np.sinh(b))
 
 def cos_complex(v):
     a = np.real(v) % (2 * np.pi)
