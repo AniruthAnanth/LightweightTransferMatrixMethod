@@ -4,6 +4,7 @@ A small Python library for calculating reflectance and transmittance data for 1 
 ## Example usage
 ```py
 import numpy as np
+import tmm
 
 # Define refractive index functions for each layer
 # These could represent, for instance, a dielectric layer and a metal layer
@@ -29,7 +30,7 @@ wavelength = 600e-9  # Wavelength of 600 nm
 theta = 0            # Normal incidence (0 radians)
 
 # Calculate reflection (R) and transmission (T)
-R, T = solve_tmm(layers, wavelength, theta)
+R, T = tmm.solve_tmm(layers, wavelength, theta)
 
 # Print the results
 print(f"Reflection (R): {R}")
