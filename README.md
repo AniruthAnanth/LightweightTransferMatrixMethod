@@ -1,5 +1,5 @@
-# A Lightweight Transfer Matrix Method in Python
-A small Python library for calculating reflectance and transmittance data for 1 dimensional multilayer media.
+# A Lightweight Transfer Matrix Method 
+A small library for calculating reflectance and transmittance data for 1 dimensional multilayer media.
 
 ## Example usage
 ```py
