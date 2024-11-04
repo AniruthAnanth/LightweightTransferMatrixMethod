@@ -50,19 +50,30 @@ def solve_tmm(layers, wavelength, theta):
 
     # Global transfer matrix initialization
     M = np.eye(2)
-
-    # 
+    
+    # Input and output refractive indices
     n_0 = layers[0][0]
     n_l = layers[-1][0]
     
+    # Memoization dictionary for storing calculated transfer matrices
+    transfer_matrices_cache = {}
+
     for layer in layers[1:-1]:
         # Get layer parameters
-        n = layer[0](wavelength) # Refractive index as a function
+        n = layer[0](wavelength)  # Refractive index as a function of wavelength
         d = layer[1]
 
-        # Calculate transfer matrix
-        theta_i = np.arcsin(n_0 * np.sin(theta) / n)
-        T_i = transfer_matrix(k_0, n, d, theta_i)
+        # Compute the key for memoization
+        cache_key = (n, d, theta)
+
+        # Check if the transfer matrix has already been computed
+        if cache_key in transfer_matrices_cache:
+            T_i = transfer_matrices_cache[cache_key]
+        else:
+            # Calculate transfer matrix if not in cache
+            theta_i = np.arcsin(n_0 * np.sin(theta) / n)
+            T_i = transfer_matrix(k_0, n, d, theta_i)
+            transfer_matrices_cache[cache_key] = T_i  # Store in cache
 
         # Update global transfer matrix with dot product
         M = np.dot(M, T_i)
