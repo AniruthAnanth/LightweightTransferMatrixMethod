@@ -19,10 +19,10 @@ def n_layer2(wavelength):
 # Define the stack of layers as tuples: (refractive index function, thickness in meters)
 # For example, two layers of different materials, each with a given thickness
 layers = [
-    (n_layer1, 0),            # Starting medium (assumed air, refractive index of 1)
+    (lambda _: 1., 0),            # Starting medium (assumed air, refractive index of 1)
     (n_layer1, 500e-9),       # Layer 1: 500 nm thickness
     (n_layer2, 300e-9),       # Layer 2: 300 nm thickness
-    (n_layer1, 0)             # Ending medium (assumed air, refractive index of 1)
+    (lambda _: 1., 0)             # Ending medium (assumed air, refractive index of 1)
 ]
 
 # Define the wavelength and angle of incidence
