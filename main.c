@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <math.h>
 #include <complex.h>
+#include <time.h>
+
+
 
 complex double complex_modulo(complex double z1, complex double z2) {
     // Calculate the absolute values of the complex numbers
@@ -140,7 +143,7 @@ void solve_tmm(double* R, double* T, complex double layers[][2], int num_layers,
 }
 
 int main() {
-    // Example usage
+    clock_t begin = clock();
     double R, T;
     complex double layers[3][2] = {
         {1.0 + 0.0 * I, 0.0},
@@ -150,5 +153,9 @@ int main() {
     solve_tmm(&R, &T, layers, 3, 500.0, 0.0);
     printf("Reflectance: %f\n", R);
     printf("Transmittance: %f\n", T);
-    return 0;
+    
+    
+clock_t end = clock();
+double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+printf("%f",time_spent);
 }
