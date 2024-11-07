@@ -148,7 +148,9 @@ int main(int argc, char** argv) {
     complex double layers[argc-1][2];
 
     for(int i =1;i<argc;i++) {
-        layers[i][2] = *argvCD[i];
+        for(int j=0;j<2;j++) {
+            layers[i][j] = *argvCD[i];
+        }
     }
     solve_tmm(&R, &T, layers, argc-1, 500.0, 0.0);
     printf("Reflectance: %f\n", R);
