@@ -140,15 +140,17 @@ void solve_tmm(double* R, double* T, complex double layers[][2], int num_layers,
     *T = pow(cabs(t), 2) * creal(n_l * cos(theta_l)) / creal(n_0 * cos(theta));
 }
 
-int main() {
+int main(int argc, char** argv) {
     clock_t begin = clock();
     double R, T;
-    complex double layers[3][2] = {
-        {1.0 + 0.0 * I, 0.0},
-        {1.5 + 0.0 * I, 100.0},
-        {1.0 + 0.0 * I, 0.0}
-    };
-    solve_tmm(&R, &T, layers, 3, 500.0, 0.0);
+    complex double** argvCD;
+    argvCD = (complex double **)argv;
+    complex double layers[argc-1][2];
+
+    for(int i =1;i<argc;i++) {
+        layers[i][2] = *argvCD[i];
+    }
+    solve_tmm(&R, &T, layers, argc-1, 500.0, 0.0);
     printf("Reflectance: %f\n", R);
     printf("Transmittance: %f\n", T);
     
