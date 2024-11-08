@@ -149,17 +149,20 @@ int main(int argc, char** argv) {
 
     clock_t begin = clock();
     double R, T;
-    int num_layers = (argc - 1) / 2;
+    int num_layers = (argc - 3) / 2;
     complex double layers[num_layers][2];
 
     for (int i = 0; i < num_layers; ++i) {
         double real_part = 0.0, imag_part = 0.0;
-        sscanf(argv[2 * i + 1], "%lf%lf", &real_part, &imag_part);
+        sscanf(argv[2 * i + 3], "%lf%lf", &real_part, &imag_part);
         layers[i][0] = real_part + imag_part * I;
-        layers[i][1] = atof(argv[2 * i + 2]);
+        layers[i][1] = atof(argv[2 * i + 4]);
     }
-
-    solve_tmm(&R, &T, layers, num_layers, 500.0, 0.0);
+    double theta;
+    theta = (double) *argv[2];
+    double wl;
+    wl = (double) *argv[1];
+    solve_tmm(&R, &T, layers, num_layers, wl, theta);
     printf("Reflectance: %f\n", R);
     printf("Transmittance: %f\n", T);
     
