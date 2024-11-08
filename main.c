@@ -2,6 +2,7 @@
 #include <math.h>
 #include <complex.h>
 #include <time.h>
+#include <stdlib.h>
 
 complex double complex_modulo(complex double z1, complex double z2) {
     // Calculate the absolute values of the complex numbers
@@ -140,20 +141,31 @@ void solve_tmm(double* R, double* T, complex double layers[][2], int num_layers,
     *T = pow(cabs(t), 2) * creal(n_l * cos(theta_l)) / creal(n_0 * cos(theta));
 }
 
-int main() {
+int main(int argc, char** argv) {
+    if (argc % 2 != 1) {
+        fprintf(stderr, "Usage: %s <complex double> <integer> ...\n", argv[0]);
+        return 1;
+    }
+
     clock_t begin = clock();
     double R, T;
-    complex double layers[3][2] = {
-        {1.0 + 0.0 * I, 0.0},
-        {1.5 + 0.0 * I, 100.0},
-        {1.0 + 0.0 * I, 0.0}
-    };
-    solve_tmm(&R, &T, layers, 3, 500.0, 0.0);
+    int num_layers = (argc - 1) / 2;
+    complex double layers[num_layers][2];
+
+    for (int i = 0; i < num_layers; ++i) {
+        double real_part = 0.0, imag_part = 0.0;
+        sscanf(argv[2 * i + 1], "%lf%lf", &real_part, &imag_part);
+        layers[i][0] = real_part + imag_part * I;
+        layers[i][1] = atof(argv[2 * i + 2]);
+    }
+
+    solve_tmm(&R, &T, layers, num_layers, 500.0, 0.0);
     printf("Reflectance: %f\n", R);
     printf("Transmittance: %f\n", T);
     
-    
-clock_t end = clock();
-double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-printf("%f",time_spent);
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Execution Time: %f seconds\n", time_spent);
+
+    return 0;
 }
