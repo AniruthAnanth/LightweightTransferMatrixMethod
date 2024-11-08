@@ -161,7 +161,6 @@ int main(int argc, char** argv) {
 
     double theta = atof(argv[2]);
     double wl = atof(argv[1]);
-    printf("%lf%lf",wl, theta);
     solve_tmm(&R, &T, layers, num_layers, wl, theta);
     printf("Reflectance: %f\n", R);
     printf("Transmittance: %f\n", T);
