@@ -5,6 +5,7 @@ A small library for calculating reflectance and transmittance data for 1 dimensi
 ```c
 gcc -o main main.c -lm
 ./main "refractiveindex1" thickness1 "refractiveindex2" thinkness2
+```
 
 ## Future goals
 - Integrate with mpi4py
