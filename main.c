@@ -158,9 +158,8 @@ int main(int argc, char** argv) {
         layers[i][0] = real_part + imag_part * I;
         layers[i][1] = atof(argv[2 * i + 4]);
     }
-    double theta;
+    double theta,wl;
     theta = (double) *argv[2];
-    double wl;
     wl = (double) *argv[1];
     solve_tmm(&R, &T, layers, num_layers, wl, theta);
     printf("Reflectance: %f\n", R);
