@@ -167,7 +167,5 @@ int main(int argc, char** argv) {
     
     clock_t end = clock();
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("Execution Time: %f seconds\n", time_spent);
-
-    return 0;
+    printf("Execution Time: %f ms\n", time_spent*pow(10,6));
 }
