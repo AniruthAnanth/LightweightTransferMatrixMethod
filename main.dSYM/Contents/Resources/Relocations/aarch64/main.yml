@@ -2,11 +2,11 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/narenganesh/CTransferMatrixMethod/main'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _complex_modulo, symObjAddr: 0x0, symBinAddr: 0x100002580, symSize: 0x104 }
-  - { offsetInCU: 0x65, offset: 0x65, size: 0x8, addend: 0x0, symName: _complex_modulo, symObjAddr: 0x0, symBinAddr: 0x100002580, symSize: 0x104 }
-  - { offsetInCU: 0xE4, offset: 0xE4, size: 0x8, addend: 0x0, symName: _sin_complex, symObjAddr: 0x104, symBinAddr: 0x100002684, symSize: 0xF0 }
-  - { offsetInCU: 0x128, offset: 0x128, size: 0x8, addend: 0x0, symName: _cos_complex, symObjAddr: 0x1F4, symBinAddr: 0x100002774, symSize: 0x100 }
-  - { offsetInCU: 0x16C, offset: 0x16C, size: 0x8, addend: 0x0, symName: _transfer_matrix, symObjAddr: 0x2F4, symBinAddr: 0x100002874, symSize: 0x298 }
-  - { offsetInCU: 0x204, offset: 0x204, size: 0x8, addend: 0x0, symName: _solve_tmm, symObjAddr: 0x58C, symBinAddr: 0x100002B0C, symSize: 0xB04 }
-  - { offsetInCU: 0x50A, offset: 0x50A, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x1090, symBinAddr: 0x100003610, symSize: 0x30C }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _complex_modulo, symObjAddr: 0x0, symBinAddr: 0x100002558, symSize: 0x104 }
+  - { offsetInCU: 0x65, offset: 0x65, size: 0x8, addend: 0x0, symName: _complex_modulo, symObjAddr: 0x0, symBinAddr: 0x100002558, symSize: 0x104 }
+  - { offsetInCU: 0xE4, offset: 0xE4, size: 0x8, addend: 0x0, symName: _sin_complex, symObjAddr: 0x104, symBinAddr: 0x10000265C, symSize: 0xF0 }
+  - { offsetInCU: 0x128, offset: 0x128, size: 0x8, addend: 0x0, symName: _cos_complex, symObjAddr: 0x1F4, symBinAddr: 0x10000274C, symSize: 0x100 }
+  - { offsetInCU: 0x16C, offset: 0x16C, size: 0x8, addend: 0x0, symName: _transfer_matrix, symObjAddr: 0x2F4, symBinAddr: 0x10000284C, symSize: 0x298 }
+  - { offsetInCU: 0x204, offset: 0x204, size: 0x8, addend: 0x0, symName: _solve_tmm, symObjAddr: 0x58C, symBinAddr: 0x100002AE4, symSize: 0xB04 }
+  - { offsetInCU: 0x50A, offset: 0x50A, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x1090, symBinAddr: 0x1000035E8, symSize: 0x334 }
 ...
