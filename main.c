@@ -159,7 +159,7 @@ int main(int argc, char** argv) {
         layers[i][1] = atof(argv[2 * i + 4]);
     }
 
-    double theta = atof(*argv[2]);
+    double theta = atof(argv[2]);
     double wl = atof(argv[1]);
     printf("%lf%lf",wl, theta);
     solve_tmm(&R, &T, layers, num_layers, wl, theta);
